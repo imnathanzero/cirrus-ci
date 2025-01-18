@@ -10,5 +10,6 @@ ccache -M 100G -F 0
 ccache -o compression=true
 ccache -z
 
-$build -j8
+$lunch
+$make -j8
 
