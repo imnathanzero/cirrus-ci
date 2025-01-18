@@ -42,8 +42,8 @@ task:
       - sudo chmod a+rx /usr/local/bin/repoo
       - repo init -u https://github.com/imnathanzero/android_manifest_havoc.git -b ten
       - repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
-      - git clone https://github.com/imnathanzero/android_device_realme_RMX1941 -b havoc-10 device/realme/RMX1941
-      - curl -s https://api.telegram.org/$tokentl/sendMessage -d chat_id=$idtl -d text="Sync Completed!"
+#      - git clone https://github.com/imnathanzero/android_device_realme_RMX1941 -b havoc-10 device/realme/RMX1941
+#      - curl -s https://api.telegram.org/$tokentl/sendMessage -d chat_id=$idtl -d text="Sync Completed!"
 
   Build_script:
       - export BUILD_USERNAME="nathan"
@@ -51,17 +51,18 @@ task:
       - export KBUILD_BUILD_USER="nathan"
       - export KBUILD_BUILD_HOST="thickdaddy27"
       - sudo ln -sf /usr/share/zoneinfo/Asia/Jakarta /etc/localtime
-      - curl -s https://api.telegram.org/$tokentl/sendMessage -d chat_id=$idtl -d text="Build qassa for RMX2185 Started!"
+#      - curl -s https://api.telegram.org/$tokentl/sendMessage -d chat_id=$idtl -d text="Build qassa for RMX2185 Started!"
+      - curl -s https://api.telegram.org/$tokentl/sendMessage -d chat_id=$idtl -d text="Sync Test Completed!"
 #      - ./collect.sh
-      - ./final.sh
-      - curl -s https://api.telegram.org/$tokentl/sendMessage -d chat_id=$idtl -d text="Build $(cd ~/rom/out/target/product/RMX2185/ && ls qassa*.zip) Completed!"
+#      - ./final.sh
+#      - curl -s https://api.telegram.org/$tokentl/sendMessage -d chat_id=$idtl -d text="Build $(cd ~/rom/out/target/product/RMX2185/ && ls qassa*.zip) Completed!"
 
   Upload_script:
-      - ./upload.sh
-      - curl -s https://api.telegram.org/$tokentl/sendMessage -d chat_id=$idtl -d text="Compres ccache"
-      - ./ziping.sh
-      - cd ~/
-      - curl -s https://api.telegram.org/$tokentl/sendMessage -d chat_id=$idtl -d text="Uploading ccache...."
-      - rclone copy ccache.tar.gz nath:havoc -P
-      - curl -s https://api.telegram.org/$tokentl/sendMessage -d chat_id=$idtl -d text="Ccache Uploaded Successfully!"
+ #     - ./upload.sh
+ #     - curl -s https://api.telegram.org/$tokentl/sendMessage -d chat_id=$idtl -d text="Compres ccache"
+ #     - ./ziping.sh
+ #     - cd ~/
+ #     - curl -s https://api.telegram.org/$tokentl/sendMessage -d chat_id=$idtl -d text="Uploading ccache...."
+ #     - rclone copy ccache.tar.gz nath:havoc -P
+ #     - curl -s https://api.telegram.org/$tokentl/sendMessage -d chat_id=$idtl -d text="Ccache Uploaded Successfully!"
 
