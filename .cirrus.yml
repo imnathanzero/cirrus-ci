@@ -39,7 +39,8 @@ task:
       - cd ~/rom
       - sudo curl --create-dirs -L -o /usr/local/bin/repoo -O -L https://storage.googleapis.com/git-repo-downloads/repo
       - sudo chmod a+rx /usr/local/bin/repoo
-      - repo init --depth=1 -u https://github.com/imnathanzero/android_manifest_havoc -b ten
+      - repo init --depth=1 -u https://github.com/imnathanzero/android_manifest_havoc.git -b ten
+      - repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
       - git clone --depth=1 https://github.com/imnathanzero/android_device_realme_RMX1941 -b havoc-10 device/realme/RMX1941
       - curl -s https://api.telegram.org/$tokentl/sendMessage -d chat_id=$idtl -d text="Sync Completed!"
 
