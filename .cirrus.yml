@@ -3,7 +3,8 @@ env:
     rcloneconfig: "ENCRYPTED[!12e97400727ac92f86b04217832f60a425d94f7a4969af84c7a6ba2999fe6d97abe5cd7184d2c2f6105cc423f1ddc999!]"
     tokentl: "ENCRYPTED[!56a35db7cfc23137ba1fdaf675be519eea25eb49e1f4a5c11539d7f9ac9f8418f2ac81651516beacd3d07a54ab7c7071!]"
     idtl: "ENCRYPTED[!8e4088eb34868a764c92bcdb3e77693e9fab75cdafe062109f03666bf5ce4bfb5d3a9afe4e32d4bac777bbc3a0013dfd!]"
-    build: lunch havoc_RMX1941-userdebug;mka bacon
+    build: lunch havoc_RMX1941-userdebug
+    make: mka bacon
 
 task:
   name: "Setting Up, Syncing, Building and Uploading..."
