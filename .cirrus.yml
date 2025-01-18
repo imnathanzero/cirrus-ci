@@ -1,10 +1,9 @@
 env:
-    credentials: "ENCRYPTED[!15a92b615d62918c240380bee0af7b6a0496b0936e6533279cf7fc376be88d97bbe553f7c5fe1406c4d70217d00d2b25!]"
-    rcloneconfig: "ENCRYPTED[!1906726d95baaa1fe1bd9bf68d36d7ab31acfd7cf53d56abcb7db0d96ac897e8113566766922052f1d6961d77680d8ba!]"
-    tokentl: "ENCRYPTED[!c07de33b1227d4decd64465c0d9038b42b5635ce998f6edb5b02985176f81e9af4d0537ac8938cb79e5434bf5802f64d!]"
-    idtl: "ENCRYPTED[!619d9a2e4f770e5d94313f5c22971ad8ab19221a07cbe0757e76638cbe19b99b946c3355dcceb2d17c4b721da68f261e!]"
-    lunch: lunch qassa_RMX2185-user
-    make: mka qassa
+    credentials: "ENCRYPTED[!c87471ba6f0de4b674627c84c784fc50e2410af80574741aa68ef1be5f39ea7b6eac084cc05aa4f40668018bb04e1180!]"
+    rcloneconfig: "ENCRYPTED[338631f3bb0e72673080c41281aa5390b11b65d4eec34473c22d143d030023079a8d43d314e40939d231ee8a5f4b8844]"
+    tokentl: "ENCRYPTED[ba5a2c2c1e892119770f8b26ebe0da64a99cad7ef9a334730ac2c418a38edad8158c52f0ca79b2ee31f8cc222fee5516]"
+    idtl: "ENCRYPTED[fc24d869006721c0d8cc0d8eb137e1dc6d7eeae68bffca05e82f9d56f9339e7e1c510cb1e1f5d9571e6813b736b80e62]"
+    make: brunch RMX1941
 
 task:
   name: "Setting Up, Syncing, Building and Uploading..."
@@ -17,13 +16,13 @@ task:
   Build-Env-Setup_background_script:
        - export DEBIAN_FRONTEND=noninteractive
        - mkdir -p ~/.config/rclone
-       - echo "$rcloneconfig" > ~/.rclone.conf
-       - git config --global user.name "picasso09"
-       - git config --global user.email "picasso09@hotmail.com"
+       - echo "$rcloneconfig" > ~/.config/rclone/rclone.conf
+       - git config --global user.name "imnathanzero"
+       - git config --global user.email "nathannxx@proton.me"
        - echo "$credentials" > ~/.git-credentials
        - git config --global credential.helper store --file=~/.git-credentials
        - mkdir -p ~/ccache
-       - rclone copy RMX2185:qassa/ccache.tar.gz ~/ -P
+       - rclone copy nath:havoc/ccache.tar.gz ~/ -P
        - cd ~/
        - time tar xf ccache.tar.gz
        - cd ~/
@@ -35,25 +34,20 @@ task:
       - ./w.sh
 
   Sync_script:
-      - curl -s https://api.telegram.org/$tokentl/sendMessage -d chat_id=$idtl -d text="Start sync qassa Source"
+      - curl -s https://api.telegram.org/$tokentl/sendMessage -d chat_id=$idtl -d text="sync havoc"
       - mkdir -p ~/rom
       - cd ~/rom
       - sudo curl --create-dirs -L -o /usr/local/bin/repoo -O -L https://storage.googleapis.com/git-repo-downloads/repo
       - sudo chmod a+rx /usr/local/bin/repoo
-      - repo init --depth=1 -u https://github.com/keepQASSA/manifest -b Q
-      - sed -i 's|ssh://git@github.com|https://github.com|g' .repo/manifests/snippets/qassa.xml
-#      - repoo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j8 --fail-fast
-      - repo sync -c -j8 --force-sync --no-clone-bundle --no-tags
-      - sed -i 's| -u||g' vendor/qassa/config/branding.mk
-      - git clone --depth=1 https://github.com/picasso09/android_device_realme_RMX2185 -b qassa-c12 device/realme/RMX2185
+      - repo init --depth=1 -u https://github.com/imnathanzero/android_manifest_havoc -b ten
+      - git clone --depth=1 https://github.com/imnathanzero/android_device_realme_RMX1941 -b havoc-10 device/realme/RMX1941
       - curl -s https://api.telegram.org/$tokentl/sendMessage -d chat_id=$idtl -d text="Sync Completed!"
 
   Build_script:
-      - export BUILD_USERNAME="picasso09"
-      - export BUILD_HOSTNAME="DV-WORK"
-      - export KBUILD_BUILD_USER="picasso09"
-      - export KBUILD_BUILD_HOST="DV-WORK"
-      - export WITH_GAPPS=true
+      - export BUILD_USERNAME="nathan"
+      - export BUILD_HOSTNAME="thickdaddy27"
+      - export KBUILD_BUILD_USER="nathan"
+      - export KBUILD_BUILD_HOST="thickdaddy27"
       - sudo ln -sf /usr/share/zoneinfo/Asia/Jakarta /etc/localtime
       - curl -s https://api.telegram.org/$tokentl/sendMessage -d chat_id=$idtl -d text="Build qassa for RMX2185 Started!"
 #      - ./collect.sh
@@ -66,6 +60,6 @@ task:
       - ./ziping.sh
       - cd ~/
       - curl -s https://api.telegram.org/$tokentl/sendMessage -d chat_id=$idtl -d text="Uploading ccache...."
-      - rclone copy ccache.tar.gz RMX2185:qassa -P
+      - rclone copy ccache.tar.gz nath:havoc -P
       - curl -s https://api.telegram.org/$tokentl/sendMessage -d chat_id=$idtl -d text="Ccache Uploaded Successfully!"
 
