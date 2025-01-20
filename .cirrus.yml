@@ -41,7 +41,7 @@ task:
       - cd ~/rom
       - sudo curl --create-dirs -L -o /usr/local/bin/repoo -O -L https://storage.googleapis.com/git-repo-downloads/repo
       - sudo chmod a+rx /usr/local/bin/repoo
-      - repo init -u https://github.com/xdroid-CAF/xd_manifest -b eleven
+      - repo init -u https://github.com/xdCLO/xd_manifest -b eleven
       - repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
       - git clone https://github.com/nathanzerogarage/device_realme_RMX1941.git -b eleven device/realme/RMX1941
       - curl -s https://api.telegram.org/$tokentl/sendMessage -d chat_id=$idtl -d text="Sync Completed!"
