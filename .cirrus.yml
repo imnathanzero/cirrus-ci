@@ -4,7 +4,7 @@ env:
     tokentl: "ENCRYPTED[!56a35db7cfc23137ba1fdaf675be519eea25eb49e1f4a5c11539d7f9ac9f8418f2ac81651516beacd3d07a54ab7c7071!]"
     idtl: "ENCRYPTED[!8e4088eb34868a764c92bcdb3e77693e9fab75cdafe062109f03666bf5ce4bfb5d3a9afe4e32d4bac777bbc3a0013dfd!]"
     lunch: lunch xdroid_RMX1941-userdebug
-    make: make xd -j$(nproc --all)
+    make: make xd -j8
 
 task:
   name: "Setting Up, Syncing, Building and Uploading..."
