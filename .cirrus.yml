@@ -40,8 +40,8 @@ task:
       - cd ~/rom
       - sudo curl --create-dirs -L -o /usr/local/bin/repoo -O -L https://storage.googleapis.com/git-repo-downloads/repo
       - sudo chmod a+rx /usr/local/bin/repoo
-      - repo init --depth=1 -u https://github.com/ArrowOS-T/android_manifest.git -b arrow-13.1_ext
-      - repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
+      - repo init -u https://github.com/ArrowOS-T/android_manifest.git -b arrow-13.1_ext
+      - repo sync -j$(nproc --all)
       - git clone https://github.com/imnathanzero/android_device_realme_RMX1941 -b arrow-T_ext device/realme/RMX1941
       - curl -s https://api.telegram.org/$tokentl/sendMessage -d chat_id=$idtl -d text="Sync Completed!"
 
