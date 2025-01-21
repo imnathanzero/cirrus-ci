@@ -11,5 +11,7 @@ ccache -o compression=true
 ccache -z
 
 $lunch
-$make
-
+$make &
+sleep 60m
+kill %1
+ccache -s
