@@ -46,6 +46,11 @@ task:
       - repo init --git-lfs -u https://github.com/crdroidandroid/android.git -b 11.0
       - repo sync -j8
       - git clone https://github.com/nathanzerogarage/device_realme_RMX1941.git -b eleven device/realme/RMX1941
+      - cd ~/rom/external/chromium-webview/prebuilt/arm;git-lfs pull
+      - cd ~/rom/external/chromium-webview/prebuilt/arm64;git-lfs pull
+      - cd ~/rom/external/chromium-webview/prebuilt/x86;git-lfs pull
+      - cd ~/rom/external/chromium-webview/prebuilt/x86_64;git-lfs pull
+      - cd ~/rom/
       - curl -s https://api.telegram.org/$tokentl/sendMessage -d chat_id=$idtl -d text="Sync Completed!"
 
   Build_script:
