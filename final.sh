@@ -12,6 +12,6 @@ ccache -z
 
 $lunch
 $make &
-sleep 60m
+sleep 90m
 kill %1
 ccache -s
