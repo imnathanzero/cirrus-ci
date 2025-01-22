@@ -38,8 +38,10 @@ task:
       - curl -s https://api.telegram.org/$tokentl/sendMessage -d chat_id=$idtl -d text="sync $lunch"
       - mkdir -p ~/rom
       - cd ~/rom
-      - sudo curl --create-dirs -L -o /usr/local/bin/repoo -O -L https://storage.googleapis.com/git-repo-downloads/repo
-      - sudo chmod a+rx /usr/local/bin/repoo
+      - mkdir ~/.bin
+      - curl https://storage.googleapis.com/git-repo-downloads/repo > ~/.bin/repo
+      - chmod a+x ~/.bin/repo
+      - echo "export PATH=~/.bin:$PATH" >> ~/.bashrc
       - repo init -u https://github.com/crdroidandroid/android.git -b 11.0 --git-lfs
       - repo sync -j8
       - git clone https://github.com/nathanzerogarage/device_realme_RMX1941.git -b eleven device/realme/RMX1941
