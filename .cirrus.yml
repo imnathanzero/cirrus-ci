@@ -38,6 +38,8 @@ task:
       - cd ~/rom
       - sudo curl --create-dirs -L -o /usr/local/bin/repoo -O -L https://storage.googleapis.com/git-repo-downloads/repo
       - sudo chmod a+rx /usr/local/bin/repoo
-      - repo init -u https://github.com/xdroid-CAF/xd_manifest -b eleven
-      - repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
+      - sudo apt update;sudo apt install git-lfs git
+      - git-lfs install
+      - repo init -u https://github.com/ResurrectionRemix-Revived/manifest.git -b Q
+      - repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle
       - curl -s https://api.telegram.org/$tokentl/sendMessage -d chat_id=$idtl -d text="Sync Test Completed!"
