@@ -40,6 +40,6 @@ task:
       - sudo chmod a+rx /usr/local/bin/repoo
       - sudo apt update;sudo apt install git-lfs git
       - git-lfs install
-      - repo init -u https://github.com/ResurrectionRemix-Revived/manifest.git -b Q
-      - repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle
+      - repo init --depth=1 -u https://github.com/DroidX-UI/manifest.git -b 13
+      - repo sync -c -j$(nproc --all) --force-sync --optimized-fetch --no-tags --no-clone-bundle --prune
       - curl -s https://api.telegram.org/$tokentl/sendMessage -d chat_id=$idtl -d text="Sync Test Completed!"
